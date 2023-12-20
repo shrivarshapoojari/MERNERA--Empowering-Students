@@ -5,7 +5,7 @@ Project Cloud Link : https://mernera.vercel.app/
 1. Clone the project
 
 ```
-   https://github.com/shrivarshapoojari/MERNERA-Empowering-Students.git
+   https://github.com/shrivarshapoojari/MERNERA--Empowering-Students.git
 ```
 
 2. Move into the directory
