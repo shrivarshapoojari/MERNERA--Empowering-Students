@@ -10,10 +10,14 @@ const CourseDescription = () => {
     const {state}=useLocation() // acces the data sent by course card
     const navigate=useNavigate();
 
-
+const isLoggedIn=useSelector((state)=>state?.auth?.isLoggedIn)
 const dispatch=useDispatch()
   async function loadUser(){
-      await dispatch(getUserData())
+   if(isLoggedIn)
+   {
+    await dispatch(getUserData())
+   }
+      
     }
    
    
