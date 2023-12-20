@@ -17,10 +17,10 @@ const dispatch=useDispatch()
     }
    
    
-    // useEffect(()=>{
+    useEffect(()=>{
 
-    //   loadUser();
-    // },[])
+      loadUser();
+    },[])
  
     const {role , data }=useSelector((state)=>state.auth)
     
