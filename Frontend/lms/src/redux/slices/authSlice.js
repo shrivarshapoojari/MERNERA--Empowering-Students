@@ -181,6 +181,7 @@ const authSlice=createSlice({
         state.role=action?.payload?.user?.role
         state.data=action?.payload?.user
       })
+          
        
       
     }
