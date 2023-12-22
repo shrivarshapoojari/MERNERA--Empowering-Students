@@ -29,10 +29,12 @@ import PaymentFailed from './pages/Payments/paymentFailed';
 import Second from './layouts/Second';
 import Display from './pages/Dashboard/Display';
 import Addlecture from './pages/Dashboard/AddLecture';
+import Chatbot from './components/Chat/Chatbot'
 function App() {
   return (
     <>
       <BrowserRouter>
+      <Chatbot/>
                  <Routes>
                         
                          <Route exact path='/' element={<Home/>}/>
