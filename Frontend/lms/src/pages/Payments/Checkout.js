@@ -34,7 +34,8 @@ const Checkout = () => {
        e.preventDefault();
        if(!razorpayKey||!subscription_id)
        {
-         toast.error("Cant find subscription id")
+          toast("Retry after seconds")
+         toast("Loading Payment Environment")
          return;
        }
        const options={
