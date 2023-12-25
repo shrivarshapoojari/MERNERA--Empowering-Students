@@ -6,9 +6,9 @@ import {getUserData} from '../../redux/slices/authSlice'
 import Second from '../../layouts/Second'
 const PaymentSuccess = () => {
 const dispatch=useDispatch()
-  useEffect(()=>{
-    dispatch(getUserData())
-  })
+  // useEffect(()=>{
+  //   dispatch(getUserData())
+  // })
   return (
     <Second>
     <div className='min-h-[90vh] flex items-center justify-center text-white'>
