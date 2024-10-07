@@ -4,6 +4,7 @@ import cloudinary from "cloudinary"
 import fs from 'fs/promises'
 import crypto from "crypto"
 import sendEmail from "../utils/sendEmail.js";
+import Otp from "../models/otp.model.js";
 const cookieOptions = {
   
   maxAge: 7 * 24 * 60 * 60 * 1000, // save cookie for 7 days
@@ -12,6 +13,70 @@ const cookieOptions = {
 
 
 
+
+export const sendOtp=async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+      return res.status(400).json({ success: false, message: 'Email is required' });
+  }
+
+  const otp = crypto.randomInt(100000, 999999).toString();
+  const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // OTP expires in 10 minutes
+
+  try {
+       
+      await Otp.create({ email, otp, expiresAt });
+        console.log(otp)
+ 
+      const subject ="Verify your account with MERNERA"
+     
+     
+      const message =`Your one time password for registering with MERNERA is  ${otp}`
+      
+     
+     
+     
+        sendEmail(email,subject,message);
+       
+      
+       
+
+      
+      res.status(200).json({ success: true, message: 'OTP sent to email' });
+  } catch (error) {
+      res.status(500).json({ success: false, message: 'Failed to send OTP', error });
+  }
+};
+
+
+export const verifyOtp=async (req, res) => {
+  const { email, otp } = req.body;
+   console.log(email)
+   console.log(otp);
+  if (!email || !otp) {
+      return res.status(400).json({ success: false, message: 'Email and OTP are required' });
+  }
+
+  try {
+      const storedOtp = await Otp.findOne({ email, otp });
+
+      if (!storedOtp) {
+          return res.status(400).json({ success: false, message: 'Invalid OTP' });
+      }
+
+      if (storedOtp.expiresAt < new Date()) {
+          return res.status(400).json({ success: false, message: 'OTP has expired' });
+      }
+
+      // OTP is valid, delete it after successful verification
+      await Otp.deleteOne({ _id: storedOtp._id });
+
+      res.status(200).json({ success: true, message: 'OTP verified successfully' });
+  } catch (error) {
+      res.status(500).json({ success: false, message: 'Failed to verify OTP', error });
+  }
+};
 
 
 

@@ -8,6 +8,16 @@ const initialState={
     
 }
 //   data: localStorage.getItem('data') !== undefined ? JSON.parse(localStorage.getItem('data')) : {},
+
+export const sendOtp = createAsyncThunk('auth/sendOtp', async (emailData) => {
+  const response = await axiosInstance.post('/user/sendOtp', emailData);
+  return response.data;
+});
+
+export const verifyOtp = createAsyncThunk('auth/verifyOtp', async (otpData) => {
+  const response = await axiosInstance.post('/user/verifyOtp', otpData);
+  return response.data;
+});
 export const createAccount=createAsyncThunk('/auth/signup',async(data)=>{
   try{
        const response=  axiosInstance.post('/user/register',data)

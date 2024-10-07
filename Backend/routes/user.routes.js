@@ -10,9 +10,12 @@ import {
   resetPassword,
   changePassword,
   updateProfile,
+  sendOtp,
+  verifyOtp
 } from "../controllers/user.controller.js";
 import {isLoggedIn} from "../middlewares/auth.middleware.js";
-
+router.post('/sendOtp', sendOtp);
+router.post('/verifyOtp', verifyOtp);
 router.post("/register", upload.single("avatar"), register);
 
 router.post("/login", login);
