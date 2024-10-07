@@ -1,5 +1,6 @@
 # MERNERA
 Project Cloud Link : https://mernera.vercel.app/
+###  Use Firefox Browser for better experience 
 ### Setup instruction
 
 1. Clone the project
