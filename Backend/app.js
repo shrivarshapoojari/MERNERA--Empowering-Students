@@ -16,7 +16,7 @@ import  connectToDB from "./config/dbConnection.js"
 import morgan  from 'morgan'
 app.use(express.json())
 // const allowedOrigin = 'https://mernera.vercel.app';
-const allowedOrigin = 'http://mernera.shrivarshapoojary.in';
+const allowedOrigin = 'https://mernera.shrivarshapoojary.in';
 app.use(cors({
     origin: allowedOrigin,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
