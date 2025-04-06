@@ -3,7 +3,7 @@ import {BsFacebook, BsInstagram, BsLinkedin, BsTwitter} from 'react-icons/bs'
 import { FaHome } from "react-icons/fa";
 
 const NewFooter = () => {
-
+ const currentYear = new Date().getFullYear();
 
 
   return (
@@ -14,7 +14,7 @@ const NewFooter = () => {
     <p className="font-bold">
       MERNERA Pvt Ltd. <br/>Empowering Students
     </p> 
-    <p>Copyright © 2023 - All right reserved</p>
+    <p>Copyright © {currentYear} - All right reserved</p>
   </aside> 
   <nav>
     <div className="grid grid-flow-col gap-4">
